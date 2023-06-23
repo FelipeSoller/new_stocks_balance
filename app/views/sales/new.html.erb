@@ -1,2 +1,16 @@
-<h1>Sales#new</h1>
-<p>Find me in app/views/sales/new.html.erb</p>
+<h1>New Sale</h1>
+
+<%= form_with model: @sale, url: sales_path do |form| %>
+  <%= form.label :stock_id %>
+  <%= form.select :stock_id, options_for_select(Stock.all.map { |i| [i.sticker, i.id] }) %>
+
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity %>
+
+  <%= form.label :sold_at %>
+  <%= form.date_field :sold_at %>
+
+  <%= form.submit %>
+<% end %>
+
+<%= link_to 'Back', sales_path %>
