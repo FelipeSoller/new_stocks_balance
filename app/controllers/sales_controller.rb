@@ -12,6 +12,11 @@ class SalesController < ApplicationController
 
     @sale.sold_at ||= Date.current
 
+    if @sale.quantity > @sale.stock.quantity
+      redirect_to new_sale_path, alert: 'Insufficient stock for the sale.'
+      return
+    end
+
     if @sale.save
       stock = @sale.stock
       stock.quantity -= @sale.quantity
