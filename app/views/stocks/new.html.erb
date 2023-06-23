@@ -1,8 +1,8 @@
 <h1>New Stock</h1>
 
 <%= form_with model: @stock, url: stocks_path do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.label :ticker %>
+  <%= form.text_field :ticker %>
 
   <%= form.label :quantity %>
   <%= form.number_field :quantity %>

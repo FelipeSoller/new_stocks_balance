@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Item</th>
+      <th>Stock</th>
       <th>Quantity</th>
       <th>Sold At</th>
     </tr>
@@ -11,7 +11,7 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.item.name %></td>
+        <td><%= sale.stock.ticker %></td>
         <td><%= sale.quantity %></td>
         <td><%= sale.sold_at %></td>
       </tr>

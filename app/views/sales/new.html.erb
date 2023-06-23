@@ -2,7 +2,7 @@
 
 <%= form_with model: @sale, url: sales_path do |form| %>
   <%= form.label :stock_id %>
-  <%= form.select :stock_id, options_for_select(Stock.all.map { |i| [i.sticker, i.id] }) %>
+  <%= form.select :stock_id, options_for_select(Stock.all.map { |i| [i.ticker, i.id] }) %>
 
   <%= form.label :quantity %>
   <%= form.number_field :quantity %>
