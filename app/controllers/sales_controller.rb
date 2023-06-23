@@ -10,8 +10,9 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(sale_params)
 
+    @sale.sold_at ||= Date.current
+
     if @sale.save
-      # Update the stock quantity
       stock = @sale.stock
       stock.quantity -= @sale.quantity
       stock.save
