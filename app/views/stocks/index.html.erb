@@ -15,6 +15,7 @@
         <td><%= stock.ticker %></td>
         <td><%= stock.quantity %></td>
         <td><%= stock.price %></td>
+        <td><%= link_to 'Buy', new_purchase_path(stock_id: stock.id) %></td>
         <td><%= link_to 'Sell', new_sale_path(stock_id: stock.id) %></td>
       </tr>
     <% end %>
