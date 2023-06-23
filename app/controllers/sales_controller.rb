@@ -5,6 +5,7 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
+    @stocks = Stock.where('quantity > 0')
   end
 
   def create
