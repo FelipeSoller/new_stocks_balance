@@ -11,19 +11,11 @@ class SalesController < ApplicationController
 
   def create
     @sale = Sale.new(sale_params)
-
     @sale.sold_at ||= Date.current
 
-    if @sale.quantity > @sale.stock.quantity
+    if insufficient_stock?
       redirect_to new_sale_path, alert: 'Insufficient stock for the sale.'
-      return
-    end
-
-    if @sale.save
-      stock = @sale.stock
-      stock.quantity -= @sale.quantity
-      stock.save
-
+    elsif save_sale_and_update_stock
       redirect_to sales_path, notice: 'Sale was successfully created.'
     else
       render :new
@@ -34,5 +26,25 @@ class SalesController < ApplicationController
 
   def sale_params
     params.require(:sale).permit(:stock_id, :quantity, :sold_at, :price)
+  end
+
+  def insufficient_stock?
+    @sale.quantity > @sale.stock.quantity
+  end
+
+  def save_sale_and_update_stock
+    @sale.profit_or_loss = (@sale.quantity * (@sale.price - @sale.stock.price)).to_f
+
+    if @sale.save
+      update_stock_quantity
+      true
+    else
+      false
+    end
+  end
+
+  def update_stock_quantity
+    @sale.stock.quantity -= @sale.quantity
+    @sale.stock.save
   end
 end
