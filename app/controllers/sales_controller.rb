@@ -9,8 +9,14 @@ class SalesController < ApplicationController
 
   def create
     @sale = Sale.new(sale_params)
+
     if @sale.save
-      redirect_to sales_path, notice: 'Sale created successfully.'
+      # Update the stock quantity
+      stock = @sale.stock
+      stock.quantity -= @sale.quantity
+      stock.save
+
+      redirect_to sales_path, notice: 'Sale was successfully created.'
     else
       render :new
     end
