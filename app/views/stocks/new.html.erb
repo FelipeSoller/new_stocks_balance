@@ -1,2 +1,16 @@
-<h1>Stocks#new</h1>
-<p>Find me in app/views/stocks/new.html.erb</p>
+<h1>New Stock</h1>
+
+<%= form_with model: @stock, url: stocks_path do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity %>
+
+  <%= form.label :price %>
+  <%= form.number_field :price, step: 0.01 %>
+
+  <%= form.submit %>
+<% end %>
+
+<%= link_to 'Back', stocks_path %>
