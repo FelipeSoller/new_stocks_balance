@@ -5,6 +5,7 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
+    @stock = Stock.find(params[:stock_id])
     @stocks = Stock.where('quantity > 0')
   end
 
