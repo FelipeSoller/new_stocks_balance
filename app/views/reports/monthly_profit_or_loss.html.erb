@@ -1,0 +1,24 @@
+<h1>Monthly Profit or Loss</h1>
+
+<%= form_tag reports_monthly_profit_or_loss_path, method: :get do %>
+  <%= label_tag :year %>
+  <%= select_tag :year, options_for_select((2010..Time.current.year).to_a.reverse, @year.to_i) %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @profit_or_loss_by_month.each do |result| %>
+      <tr>
+        <td><%= Date::MONTHNAMES[result.month.to_i] %></td>
+        <td><%= result.total %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
