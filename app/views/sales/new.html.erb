@@ -1,18 +1,24 @@
-<h1>New Sale</h1>
+<h1 class="text-3xl font-bold mb-6">New Sale</h1>
 
-<%= form_with model: @sale, url: sales_path do |form| %>
+<%= form_with model: @sale, url: sales_path, class: "mb-6" do |form| %>
   <%= form.hidden_field :stock_id, value: @stock.id %>
 
-  <%= form.label :quantity %>
-  <%= form.number_field :quantity %>
+  <div class="mb-4">
+    <%= form.label :quantity, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.number_field :quantity, class: "form-input w-full rounded-lg" %>
+  </div>
 
-  <%= form.label :sold_at %>
-  <%= form.date_field :sold_at %>
+  <div class="mb-4">
+    <%= form.label :sold_at, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.date_field :sold_at, class: "form-input w-full rounded-lg" %>
+  </div>
 
-  <%= form.label :price %>
-  <%= form.number_field :price %>
+  <div class="mb-4">
+    <%= form.label :price, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.number_field :price, class: "form-input w-full rounded-lg" %>
+  </div>
 
-  <%= form.submit %>
+  <%= form.submit class: "bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
 <% end %>
 
-<%= link_to 'Back', sales_path %>
+<%= link_to 'Back', stocks_path, class: "inline-block bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>

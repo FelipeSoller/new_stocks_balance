@@ -1,22 +1,24 @@
-<h1>Sales</h1>
+<h1 class="text-3xl font-bold mb-6">Sales</h1>
 
-<table>
+<table class="w-full border-collapse">
   <thead>
     <tr>
-      <th>Stock</th>
-      <th>Quantity</th>
-      <th>Sold At</th>
+      <th class="py-2 px-4 bg-gray-200 text-left">Stock</th>
+      <th class="py-2 px-4 bg-gray-200 text-left">Quantity</th>
+      <th class="py-2 px-4 bg-gray-200 text-left">Profit or Loss</th>
+      <th class="py-2 px-4 bg-gray-200 text-left">Sold At</th>
     </tr>
   </thead>
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.stock.ticker %></td>
-        <td><%= sale.quantity %></td>
-        <td><%= sale.sold_at %></td>
+        <td class="py-2 px-4 border-b"><%= sale.stock.ticker %></td>
+        <td class="py-2 px-4 border-b"><%= sale.quantity %></td>
+        <td class="py-2 px-4 border-b"><%= sale.profit_or_loss %></td>
+        <td class="py-2 px-4 border-b"><%= sale.sold_at %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Sale', new_sale_path %>
+<%= link_to 'Back', stocks_path, class: 'mt-6 inline-block bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>

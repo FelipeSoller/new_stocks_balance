@@ -1,25 +1,36 @@
-<h1>Stocks</h1>
+<h1 class="text-3xl font-bold mb-6">Stocks</h1>
 
-<table>
+<table class="w-full border-collapse">
   <thead>
     <tr>
-      <th>Ticker</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th></th>
+      <th class="py-2 px-4 bg-gray-200 text-left">Ticker</th>
+      <th class="py-2 px-4 bg-gray-200 text-left">Quantity</th>
+      <th class="py-2 px-4 bg-gray-200 text-left">Price</th>
+      <th class="py-2 px-4 bg-gray-200"></th>
+      <th class="py-2 px-4 bg-gray-200"></th>
     </tr>
   </thead>
   <tbody>
     <% @stocks.each do |stock| %>
       <tr>
-        <td><%= stock.ticker %></td>
-        <td><%= stock.quantity %></td>
-        <td><%= stock.price %></td>
-        <td><%= link_to 'Buy', new_purchase_path(stock_id: stock.id) %></td>
-        <td><%= link_to 'Sell', new_sale_path(stock_id: stock.id) %></td>
+        <td class="py-2 px-4 border-b">
+          <%= stock.ticker %>
+        </td>
+        <td class="py-2 px-4 border-b">
+          <%= stock.quantity %>
+        </td>
+        <td class="py-2 px-4 border-b">
+          <%= stock.price %>
+        </td>
+        <td class="py-2 px-4 border-b">
+          <%= link_to 'Buy', new_purchase_path(stock_id: stock.id), class: 'bg-green-500 hover:bg-green-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline' %>
+        </td>
+        <td class="py-2 px-4 border-b">
+          <%= link_to 'Sell', new_sale_path(stock_id: stock.id), class: 'bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Stock', new_stock_path %>
+<%= link_to 'New Stock', new_stock_path, class: 'mt-6 inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>

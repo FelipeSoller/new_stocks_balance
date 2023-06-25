@@ -1,16 +1,22 @@
-<h1>New Stock</h1>
+<h1 class="text-3xl font-bold mb-6">New Stock</h1>
 
-<%= form_with model: @stock, url: stocks_path do |form| %>
-  <%= form.label :ticker %>
-  <%= form.text_field :ticker %>
+<%= form_with model: @stock, url: stocks_path, class: "mb-6" do |form| %>
+  <div class="mb-4">
+    <%= form.label :ticker, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.text_field :ticker, class: "form-input w-full rounded-lg" %>
+  </div>
 
-  <%= form.label :quantity %>
-  <%= form.number_field :quantity %>
+  <div class="mb-4">
+    <%= form.label :quantity, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.number_field :quantity, class: "form-input w-full rounded-lg" %>
+  </div>
 
-  <%= form.label :price %>
-  <%= form.number_field :price, step: 0.01 %>
+  <div class="mb-4">
+    <%= form.label :price, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.number_field :price, step: 0.01, class: "form-input w-full rounded-lg" %>
+  </div>
 
-  <%= form.submit %>
+  <%= form.submit class: "bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
 <% end %>
 
-<%= link_to 'Back', stocks_path %>
+<%= link_to 'Back', stocks_path, class: "inline-block bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
