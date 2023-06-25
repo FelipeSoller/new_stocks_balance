@@ -19,8 +19,15 @@
     <tbody>
       <% @profit_or_loss_by_month.each do |result| %>
         <tr>
-          <td class="py-2 px-4 border-b"><%= Date::MONTHNAMES[result.month.to_i] %></td>
-          <td class="py-2 px-4 border-b"><%= result.total %></td>
+          <td
+            class="py-2 px-4 border-b">
+            <%= Date::MONTHNAMES[result.month.to_i] %>
+          </td>
+          <td
+            class="py-2 px-4 border-b <%= result.total&.positive? ? 'text-green-500' : 'text-red-500' %>"
+          >
+            <%= number_to_currency(result.total, unit: 'R$', format: '%u %n') %>
+          </td>
         </tr>
       <% end %>
     </tbody>

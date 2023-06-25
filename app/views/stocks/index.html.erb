@@ -20,7 +20,7 @@
           <%= stock.quantity %>
         </td>
         <td class="py-2 px-4 border-b">
-          <%= stock.price %>
+          <%= number_to_currency(stock.price, unit: 'R$', format: '%u %n') %>
         </td>
         <td class="py-2 px-4 border-b">
           <%= link_to 'Buy', new_purchase_path(stock_id: stock.id), class: 'bg-green-500 hover:bg-green-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline' %>

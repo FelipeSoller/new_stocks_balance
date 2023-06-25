@@ -14,8 +14,9 @@
       <tr>
         <td class="py-2 px-4 border-b"><%= sale.stock.ticker %></td>
         <td class="py-2 px-4 border-b"><%= sale.quantity %></td>
-        <td class="py-2 px-4 border-b"><%= sale.profit_or_loss %></td>
-        <td class="py-2 px-4 border-b"><%= sale.sold_at %></td>
+        <td class="py-2 px-4 border-b <%= sale.profit_or_loss.positive? ? 'text-green-500' : 'text-red-500' %>">
+          <%= number_to_currency(sale.profit_or_loss, unit: 'R$', format: '%u %n') %></td>
+        <td class="py-2 px-4 border-b"><%= sale.sold_at.strftime('%d %B %Y') %></td>
       </tr>
     <% end %>
   </tbody>
