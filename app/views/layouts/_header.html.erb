@@ -1,0 +1,18 @@
+<header class="bg-teal-900 py-4">
+  <div class="container mx-auto px-4 flex justify-between items-center">
+    <h1 class="text-white text-3xl font-bold">Stocks Balance</h1>
+    <nav>
+      <ul class="flex space-x-4">
+        <li>
+          <%= link_to 'Stocks', stocks_path, class: "text-white hover:text-gray-200" %>
+        </li>
+        <li>
+          <%= link_to 'Sales', sales_path, class: "text-white hover:text-gray-200" %>
+        </li>
+        <li>
+          <%= link_to 'Reports', reports_monthly_profit_or_loss_path, class: "text-white hover:text-gray-200" %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
