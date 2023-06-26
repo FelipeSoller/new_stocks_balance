@@ -14,6 +14,7 @@
       <tr>
         <th class="py-2 px-4 bg-gray-200 text-left">Month</th>
         <th class="py-2 px-4 bg-gray-200 text-left">Total</th>
+        <th class="py-2 px-4 bg-gray-200 text-left">Taxa</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,11 @@
             class="py-2 px-4 border-b <%= result.total&.positive? ? 'text-green-500' : 'text-red-500' %>"
           >
             <%= number_to_currency(result.total, unit: 'R$', format: '%u %n') %>
+          </td>
+          <td
+            class="py-2 px-4 border-b <%= result.percentage&.positive? ? 'text-green-500' : 'text-red-500' %>"
+          >
+            <%= result.percentage %>
           </td>
         </tr>
       <% end %>
